@@ -1,6 +1,5 @@
 import requests
-from flask import Flask, render_template
-from flask import request
+from flask import Flask, render_template, request, jsonify
 
 new_list = []
 
@@ -15,7 +14,7 @@ def clear():
     new_list.clear()
     return "Success", 200
 
-@app.route("/test", methods=['POST'])
+@app.route("/test", methods=['GET','POST'])
 def process():
     data = request.get_json()
     if "id" in data:
@@ -24,15 +23,19 @@ def process():
         new_d = adverse()
         if new_d != None:
             new_d = new_d.json()
+        else:
+            new_d = "Success"
         print(new_d)
-    return "Success", 200
+    return jsonify(new_d), 200
 
+#Adds new medications to list for current user
 def addMain(medNum):
     if len(new_list) == 0:
         new_list.append(medNum)
     elif medNum not in new_list:
         new_list.append(medNum)
 
+#Processes API request to check for drug interactions
 def adverse():
     base_add = 'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis='
     if len(new_list) > 1:

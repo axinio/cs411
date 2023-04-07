@@ -19,6 +19,9 @@
   <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.js'></script>
   <button onClick = "addM()"  type = "button">Add</button>
   <button onClick = "clear()" type = "button">Clear</button>
+  <p id="test">
+
+  </p>
   <script>
     var temp
     // Create drug list for the name field
@@ -43,7 +46,7 @@
     Def.Autocompleter.Event.observeListSelections('drug_strengths', function(data) {
       temp = data.item_code;
     })
-    
+    //Calls endpoint and sends JSON with medication information
     function addM(){
         fetch('http://127.0.0.1:5000/test', {
     method: 'POST',
@@ -53,7 +56,13 @@
     },
     body: JSON.stringify({ "id" : temp})
     })
-   .then(response => console.log(response))
+    //Debug - Prints out response on webpage
+   .then(response => response.json())
+   .then(function(data) {
+    console.log(data)
+    const test = document.getElementById('test');
+    test.innerHTML = JSON.stringify(data)
+  })
     }
 
     function clear(){
@@ -63,5 +72,4 @@
     }
   </script>
 </body>
-
 </html>
