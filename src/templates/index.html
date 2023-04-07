@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <!--
+        Testing code by:
+        Lister Hill National Center for Biomedical Communications
+        National Library of Medicine
+        Bethesda, MD
+    -->
+  <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.css' rel="stylesheet">
+</head>
+
+<body></body>
+  Drug Name: <input type="text" id="rxterms" placeholder="Drug name">
+  <p>
+  Strength: <input type="text" id="drug_strengths" placeholder="Strength list">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- example CDN-- you may choose another source --> 
+  <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.js'></script>
+  <button onClick = "addM()"  type = "button">Add</button>
+  <button onClick = "clear()" type = "button">Clear</button>
+  <script>
+    var temp
+    // Create drug list for the name field
+    new Def.Autocompleter.Search('rxterms',
+      'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
+      
+    // Create an initially empty list for the strength field
+    new Def.Autocompleter.Prefetch('drug_strengths', []);
+      
+    // Populate the strength list after the user selects a drug name
+    Def.Autocompleter.Event.observeListSelections('rxterms', function() {
+      var drugField = $('#rxterms')[0];
+      var drugName = drugField.value;
+      var drugAutocomp = drugField.autocomp;
+      var strengths = drugAutocomp.getItemExtraData(drugName)['STRENGTHS_AND_FORMS'];
+      var rxcuis = drugAutocomp.getItemExtraData(drugName)['RXCUIS'];
+      if (strengths)
+        $('#drug_strengths')[0].autocomp.setListAndField(strengths, rxcuis);
+    });
+
+    // Updates current RxCUI code for post req
+    Def.Autocompleter.Event.observeListSelections('drug_strengths', function(data) {
+      temp = data.item_code;
+    })
+    
+    function addM(){
+        fetch('http://127.0.0.1:5000/test', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "id" : temp})
+    })
+   .then(response => console.log(response))
+    }
+
+    function clear(){
+        fetch('http://127.0.0.1:5000/clear', {
+    method: 'POST'
+    })
+    }
+  </script>
+</body>
+
+</html>
