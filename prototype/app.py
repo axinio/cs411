@@ -1,9 +1,12 @@
 import requests
 from flask import Flask, render_template, request, jsonify
+from reqprocess import addMain, newChecker
 
-new_list = []
 
 app = Flask(__name__)
+
+if __name__ == "__main__":
+    app.run(debug = True)
 
 @app.route("/")
 def home():
@@ -11,38 +14,20 @@ def home():
 
 @app.route("/clear", methods=['POST'])
 def clear():
-    new_list.clear()
     return "Success", 200
 
 @app.route("/test", methods=['GET','POST'])
 def process():
     data = request.get_json()
     if "id" in data:
-        print(data["id"])
-        addMain(data["id"])
-        new_d = adverse()
-        if new_d != None:
-            new_d = new_d.json()
+        i = data["id"]
+        print(i)
+        addMain(i)
+        new_d = newChecker()
+        if new_d == None:
+            return "Success"
         else:
-            new_d = "Success"
+            yes = jsonify(new_d)
         print(new_d)
-    return jsonify(new_d), 200
+    return yes, 200
 
-#Adds new medications to list for current user
-def addMain(medNum):
-    if len(new_list) == 0:
-        new_list.append(medNum)
-    elif medNum not in new_list:
-        new_list.append(medNum)
-
-#Processes API request to check for drug interactions
-def adverse():
-    base_add = 'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis='
-    if len(new_list) > 1:
-        for x in range(len(new_list)):
-                base_add = base_add + (str(new_list[x])+'+')
-        get_resp = requests.get(base_add)
-        print(base_add)
-    else:
-        return None
-    return get_resp
