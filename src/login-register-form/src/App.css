@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: lightsalmon;
+}
+
+.auth-form-container, .login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 4px 10px darkslategray;
+}
+
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 4rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0.5rem;
+  }
+}
+
+.Pill-logo {
+  align-self: center;
+  width: 35px;
+  padding: 7px;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+  text-shadow: 2px 4px 10px darkslategray;
+}
+
+input {
+  width: 240px;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+button {
+  margin: 0.5rem;
+  align-self: center;
+  width: 100px;
+  border: none;
+  background-color: darkslategray;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.link-btn {
+  font-size: 12px;
+  width: auto;
+  background: none;
+  color: white;
+  text-shadow: 2px 4px 10px darkslategray;
+}
+
+.google-btn,
+.apple-btn {
+  margin: 0.5rem;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.google-btn {
+  background-color: #ea4335;
+}
+
+.google-btn:hover {
+  background-color: #f24d3c;
+}
+
+.apple-btn {
+  background-color: #000000;
+}
+
+.apple-btn:hover {
+  background-color: #333333;
+}
