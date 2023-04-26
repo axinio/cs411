@@ -11,11 +11,22 @@
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
-  text-shadow: 2px 4px 10px darkslategray;
+  text-shadow: 2px 2px 5px black;
+}
+
+.main-page {
+  display: flex;
+}
+
+.med-form-container {
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 5px black;
+  flex: 1;
 }
 
 @media screen and (min-width: 600px) {
-  .auth-form-container {
+  .auth-form-container, .med-form-container {
     padding: 4rem;
     border: 2px solid white;
     border-radius: 5px;
@@ -29,19 +40,21 @@
   padding: 7px;
 }
 
-label {
-  text-align: left;
-  padding: 0.25rem 0;
-  text-shadow: 2px 4px 10px darkslategray;
-}
-
 input {
   width: 240px;
-  margin: 0.5rem 0;
+  margin: 5px;
   padding: 0.8rem;
   border: none;
   border-radius: 7px;
   font-weight: bold;
+}
+
+#med {
+  width: 150px;
+}
+
+#dose {
+  width: 30px;
 }
 
 button {
@@ -57,12 +70,34 @@ button {
   font-weight: bold;
 }
 
+.med-list {
+  margin-left: 1rem;
+  flex: 0;
+}
+
+.med-item {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 15px;
+
+  background-color: darkslategray;
+  text-align: left;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-block: 10px;
+}
+
+.delete-btn {
+  width: 30px;
+}
+
 .link-btn {
   font-size: 12px;
   width: auto;
   background: none;
   color: white;
-  text-shadow: 2px 4px 10px darkslategray;
+  text-shadow: 2px 2px 5px black;
 }
 
 .google-btn,
@@ -76,8 +111,6 @@ button {
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
-  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
 }
 
