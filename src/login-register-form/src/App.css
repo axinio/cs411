@@ -1,0 +1,131 @@
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: lightsalmon;
+}
+
+.auth-form-container, .login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 5px black;
+}
+
+.main-page {
+  display: flex;
+}
+
+.med-form-container {
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 5px black;
+  flex: 1;
+}
+
+@media screen and (min-width: 600px) {
+  .auth-form-container, .med-form-container {
+    padding: 4rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0.5rem;
+  }
+}
+
+.Pill-logo {
+  align-self: center;
+  width: 35px;
+  padding: 7px;
+}
+
+input {
+  width: 240px;
+  margin: 5px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+#med {
+  width: 150px;
+}
+
+#dose {
+  width: 30px;
+}
+
+button {
+  margin: 0.5rem;
+  align-self: center;
+  width: 100px;
+  border: none;
+  background-color: darkslategray;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.med-list {
+  margin-left: 1rem;
+  flex: 0;
+}
+
+.med-item {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 15px;
+
+  background-color: darkslategray;
+  text-align: left;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-block: 10px;
+}
+
+.delete-btn {
+  width: 30px;
+}
+
+.link-btn {
+  font-size: 12px;
+  width: auto;
+  background: none;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+}
+
+.google-btn,
+.apple-btn {
+  margin: 0.5rem;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+
+.google-btn {
+  background-color: #ea4335;
+}
+
+.google-btn:hover {
+  background-color: #f24d3c;
+}
+
+.apple-btn {
+  background-color: #000000;
+}
+
+.apple-btn:hover {
+  background-color: #333333;
+}
