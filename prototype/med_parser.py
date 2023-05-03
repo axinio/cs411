@@ -1,5 +1,6 @@
 import json
 #new tracing function
+
 def wrap_trace(json_d):
     temp = []
     a = json_d.json()

@@ -7,7 +7,7 @@
         National Library of Medicine
         Bethesda, MD
     -->
-  <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.css' rel="stylesheet">
+  <link rel="stylesheet" href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.css'>
 </head>
 
 <body></body>
@@ -23,7 +23,7 @@
 
   </p>
   <script>
-    var temp
+  var temp
     // Create drug list for the name field
     new Def.Autocompleter.Search('rxterms',
       'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS,RXCUIS');
@@ -71,5 +71,4 @@
     })
     }
   </script>
-</body>
 </html>
