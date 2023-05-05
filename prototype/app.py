@@ -57,11 +57,18 @@ if __name__ == "__main__":
 @app.route("/test", methods=['GET','POST'])
 def process():
     current_id = new_ID
-    data = request.get_json()
-    processing = request_process_path(current_id,data)
-    if processing == None:
-        return "Success"
-    else:
-        yes = jsonify(processing)
-    return yes, 200
+    
+    try:
+        data = request.get_json()
+        processing = request_process_path(current_id,data)
+        if processing == None:
+            return "Success"
+        else:
+            yes = jsonify(processing)
+        return yes, 200
+    except:
+        re_data = retrieveData(current_id)
+        k = repopulate_list(re_data)
+        return k, 200
+    
 

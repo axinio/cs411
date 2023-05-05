@@ -7,7 +7,8 @@
         National Library of Medicine
         Bethesda, MD
     -->
-  <link rel="stylesheet" href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.3/autocomplete-lhc.min.css'>
+  <link rel="stylesheet" href='static/other.css'>
+  <script src="static/myscripts.js"></script>
 </head>
 
 <body></body>
@@ -23,6 +24,7 @@
 
   </p>
   <script>
+  window.onload = addM();
   var temp
     // Create drug list for the name field
     new Def.Autocompleter.Search('rxterms',
@@ -61,7 +63,7 @@
    .then(function(data) {
     console.log(data)
     const test = document.getElementById('test');
-    test.innerHTML = JSON.stringify(data)
+    addMark(data)
   })
     }
 
