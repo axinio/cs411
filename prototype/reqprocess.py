@@ -68,6 +68,8 @@ def clear_curr_list():
     new_list.clear()
 
 
+
+
 #Different Version of newChecker
 # def newChecker():
 #     n = len(new_list)

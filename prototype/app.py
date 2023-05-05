@@ -49,6 +49,7 @@ def indentity_set():
 
 @app.route("/clear", methods=['POST'])
 def clear():
+    clear_curr_list()
     return "Success", 200
 
 if __name__ == "__main__":
